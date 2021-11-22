@@ -13,23 +13,26 @@
         {
             "command": 
             {
-                "action": "moveFocus",
-                "direction": "up"
-            },
-            "keys": "ctrl+alt+up"
-        },
-        {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "command": 
-            {
                 "action": "splitPane",
                 "split": "horizontal",
                 "splitMode": "duplicate"
             },
             "keys": "ctrl+alt+h"
+        },
+        {
+            "command": 
+            {
+                "action": "newTab"
+            },
+            "keys": ""
+        },
+        {
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "up"
+            },
+            "keys": "ctrl+alt+up"
         },
         {
             "command": "paste",
@@ -42,10 +45,13 @@
         {
             "command": 
             {
-                "action": "splitPane",
-                "split": "auto",
-                "splitMode": "duplicate"
+                "action": "moveFocus",
+                "direction": "previous"
             }
+        },
+        {
+            "command": "find",
+            "keys": "ctrl+shift+f"
         },
         {
             "command": 
@@ -55,6 +61,14 @@
                 "splitMode": "duplicate"
             },
             "keys": "ctrl+alt+v"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            }
         },
         {
             "command": "closePane"
@@ -86,28 +100,14 @@
         {
             "command": 
             {
-                "action": "moveFocus",
-                "direction": "previous"
-            }
-        },
-        {
-            "command": 
-            {
                 "action": "newWindow"
             },
             "keys": "ctrl+alt+n"
-        },
-        {
-            "command": 
-            {
-                "action": "newTab"
-            },
-            "keys": ""
         }
     ],
     "copyFormatting": "none",
     "copyOnSelect": true,
-    "defaultProfile": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+    "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
     "initialCols": 142,
     "initialRows": 46,
     "profiles": 
@@ -116,28 +116,47 @@
         "list": 
         [
             {
+                "antialiasingMode": "cleartype",
+                "closeOnExit": "always",
+                "colorScheme": "Tango Dark",
                 "commandline": "powershell.exe",
+                "font": 
+                {
+                    "face": "FiraCode NF Retina"
+                },
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
                 "name": "Windows PowerShell"
             },
             {
+                "antialiasingMode": "cleartype",
+                "closeOnExit": "always",
+                "colorScheme": "Tango Dark",
                 "commandline": "cmd.exe",
+                "cursorShape": "vintage",
+                "font": 
+                {
+                    "face": "FiraCode NF Retina"
+                },
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": false,
                 "name": "Command Prompt"
             },
             {
                 "antialiasingMode": "cleartype",
+                "closeOnExit": "always",
                 "colorScheme": "Tango Dark",
                 "cursorShape": "emptyBox",
-                "fontFace": "FiraCode Nerd Font Retina",
-                "fontSize": 11,
-                "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+                "font": 
+                {
+                    "face": "FiraCode NF Retina",
+                    "size": 11
+                },
+                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": false,
-                "name": "Ubuntu-20.04",
+                "name": "Ubuntu",
                 "source": "Windows.Terminal.Wsl",
-                "startingDirectory": "//wsl$/Ubuntu-20.04/home/aaron"
+                "startingDirectory": "//wsl$/Ubuntu/home/aaron"
             },
             {
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
