@@ -79,6 +79,8 @@ function credstash {
 # iTerm2 integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+if [ -e /usr/local/bin/fixdns.sh ]; then sudo /usr/local/bin/fixdns.sh; fi
+
 # powerleve10k setup
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
