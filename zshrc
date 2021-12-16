@@ -81,6 +81,11 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 if [ -e /usr/local/bin/fixdns.sh ]; then sudo /usr/local/bin/fixdns.sh; fi
 
+if [[ $(pwd) != "$HOME" ]]
+then
+    cd $HOME
+fi
+
 # powerleve10k setup
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
