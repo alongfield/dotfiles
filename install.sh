@@ -1,7 +1,7 @@
 #!/bin/sh
 
 LSD_VERSION="0.20.1"
-K9S_VERSION="0.25.14"
+K9S_VERSION="0.25.18"
 ASDF_VERSION="0.8.1"
 
 sudo echo Starting
