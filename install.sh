@@ -1,6 +1,6 @@
 #!/bin/sh
 
-LSD_VERSION="0.20.1"
+LSD_VERSION="0.21.0"
 K9S_VERSION="0.25.18"
 ASDF_VERSION="0.8.1"
 
@@ -31,14 +31,16 @@ then
     sudo apt update
     sudo apt install -y kubectl helm
 
-    sudo apt install -y https://github.com/Peltoche/lsd/releases/download/v${LSD_VERSION}/lsd-musl_${LSD_VERSION}_amd64.deb
+    curl -fsSLo lsd.deb https://github.com/Peltoche/lsd/releases/download/${LSD_VERSION}/lsd-musl_${LSD_VERSION}_amd64.deb
+    sudo apt install ./lsd.deb
+    rm -f lsd.deb
 
     curl -s -L https://github.com/derailed/k9s/releases/download/v${K9S_VERSION}/k9s_Linux_x86_64.tar.gz -o - | tar -zxf - k9s
     sudo chown root:root k9s
     sudo mv k9s /usr/local/bin/k9s
 fi
 
-sudo apt install -y build-essential libffi-dev make libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+sudo apt install -y build-essential libffi-dev make libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev unzip zsh vim
 
 sudo git clone https://github.com/asdf-vm/asdf.git /usr/local/opt/asdf --branch v${ASDF_VERSION}
 /usr/local/opt/asdf/bin/asdf plugin add java https://github.com/halcyon/asdf-java.git
