@@ -1,8 +1,8 @@
 #!/bin/sh
 
-LSD_VERSION="0.21.0"
-K9S_VERSION="0.25.18"
-ASDF_VERSION="0.8.1"
+LSD_VERSION="0.23.1"
+K9S_VERSION="0.26.6"
+ASDF_VERSION="0.10.2"
 
 sudo echo Starting
 
@@ -38,11 +38,30 @@ then
     curl -s -L https://github.com/derailed/k9s/releases/download/v${K9S_VERSION}/k9s_Linux_x86_64.tar.gz -o - | tar -zxf - k9s
     sudo chown root:root k9s
     sudo mv k9s /usr/local/bin/k9s
+
+    sudo apt install -y build-essential libffi-dev make libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev unzip zsh vim
+
+    sudo git clone https://github.com/asdf-vm/asdf.git /usr/local/opt/asdf --branch v${ASDF_VERSION}
 fi
 
-sudo apt install -y build-essential libffi-dev make libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev unzip zsh vim
+if [ -e /usr/sbin/pacman ]
+then
+    pacman -Syu
 
-sudo git clone https://github.com/asdf-vm/asdf.git /usr/local/opt/asdf --branch v${ASDF_VERSION}
+    pacman -S git
+    git clone https://aur.archlinux.org/yay-git.git $HOME/yay-git
+    cd $HOME/yay-git
+    makepkg -si
+
+    sudo pacman -S base-devel
+    yay -S asdf-vm bat lsd jq yq helm k9s krew-bin kubectl links net-tools openssh p7zip unzip awesome-terminal-fonts wget curl zsh vim inetutils net-tools
+
+    sudo mkdir -p /usr/local/opt
+    sudo ln -s /opt/asdf-vm /usr/local/opt/asdf
+    sudo chown root:root /usr/local/opt /usr/local/opt/asdf
+fi
+
+/usr/local/opt/asdf/bin/asdf plugin add awscli https://github.com/MetricMike/asdf-awscli.git
 /usr/local/opt/asdf/bin/asdf plugin add java https://github.com/halcyon/asdf-java.git
 /usr/local/opt/asdf/bin/asdf plugin add maven https://github.com/halcyon/asdf-maven.git
 /usr/local/opt/asdf/bin/asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
@@ -50,8 +69,3 @@ sudo git clone https://github.com/asdf-vm/asdf.git /usr/local/opt/asdf --branch 
 /usr/local/opt/asdf/bin/asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
 /usr/local/opt/asdf/bin/asdf plugin add terraform https://github.com/Banno/asdf-hashicorp.git
 /usr/local/opt/asdf/bin/asdf install
-
-cat $HOME/.tool-versions | while read line
-do
-   /usr/local/opt/asdf/bin/asdf global $line
-done

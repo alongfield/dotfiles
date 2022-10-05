@@ -1,0 +1,4 @@
+alongfield ALL=(ALL) ALL
+alongfield ALL=(ALL) NOPASSWD: /usr/local/bin/fixdns.sh
+aaron ALL=(ALL) ALL
+aaron ALL=(ALL) NOPASSWD: /usr/local/bin/fixdns.sh

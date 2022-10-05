@@ -62,6 +62,8 @@ alias kprodeum='k config use-context prod-eu-messaging'
 
 alias kops='k config use-context ops-main'
 
+alias k9s='k9s --namespace $(kubectl config view --minify -o jsonpath='{..namespace}')'
+
 # Drift credstash implementation
 function update_credstash {
   # ops account
