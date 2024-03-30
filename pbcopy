@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ -f "/proc/sys/fs/binfmt_misc/WSLInterop" ] || uname -r | grep -qi "microsoft"; then
+  tee <&0 | clip.exe
+else
+  xclip -selection clipboard
+fi
+
+exit 0
