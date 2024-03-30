@@ -45,7 +45,6 @@ alias klog='k logs'
 alias kdebug='k run debug --image ubuntu:latest -ti --rm=true'
 
 # Drift kubernetes envs
-alias kqaml='k config use-context qa-ml'
 alias kqaloam='k config use-context qa-loam'
 alias kqam='k config use-context qa-messaging'
 alias kqa='k config use-context qa-main'
@@ -53,16 +52,30 @@ alias kqacentral='k config use-context qa-central'
 
 alias kprodm='k config use-context prod-messaging'
 alias kprod='k config use-context prod-main'
-alias kprodml='k config use-context prod-ml'
 alias kprodcentral='k config use-context prod-central'
-
-alias kprodeu='k config use-context prod-eu-main'
-alias kprodeucentral='k config use-context prod-eu-central'
-alias kprodeum='k config use-context prod-eu-messaging'
 
 alias kops='k config use-context ops-main'
 
 alias k9s='k9s --namespace $(kubectl config view --minify -o jsonpath='{..namespace}')'
+
+# If we're on Linux then create clipboard aliases
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  function pbcopy() {
+    if [ -f "/proc/sys/fs/binfmt_misc/WSLInterop" ] || uname -r | grep -qi "microsoft"; then
+      tee <&0 | clip.exe
+    else
+      xclip -selection clipboard
+    fi
+  }
+
+  function pbpaste() {
+    if [ -f "/proc/sys/fs/binfmt_misc/WSLInterop" ] || uname -r | grep -qi "microsoft"; then
+      powershell.exe -noprofile -command "Get-Clipboard"
+    else
+      xclip -selection clipboard -o
+    fi
+  }
+fi
 
 # Drift credstash implementation
 function update_credstash {

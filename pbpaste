@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-if [ -f "/proc/sys/fs/binfmt_misc/WSLInterop" ] || uname -r | grep -qi "microsoft"; then
-  powershell.exe Get-Clipboard | sed 's/\r$//' | sed -z '$ s/\n$//'
-else
-  xclip -o
-fi
-
-exit 0

@@ -20,15 +20,6 @@ git submodule update --recursive
 
 if [[ "$OSTYPE" == "linux-gnu" ]]
 then
-  PBCOPY="/usr/local/bin/pbcopy"
-  PBPASTE="/usr/local/bin/pbpaste"
-  if [[ ! -e "$PBCOPY" ]]; then
-    sudo install -m 755 -o root -g root $HOME/dotfiles/pbcopy "$PBCOPY"
-  fi
-  if [[ ! -e "$PBPASTE" ]]; then
-    sudo install -m 755 -o root -g root $HOME/dotfiles/pbcopy "$PBPASTE"
-  fi
-
   if grep -q "ID=ubuntu" /etc/os-release
   then
       sudo apt install -y bat git wget curl jq apt-transport-https vim links ca-certificates
