@@ -19,7 +19,7 @@ if type brew &>/dev/null; then
 fi
 
 # asdf tool version manager
-. /usr/local/opt/asdf/asdf.sh
+. /usr/local/opt/asdf/bin/asdf.sh
 
 # use the correct editor
 alias vi='vim'
