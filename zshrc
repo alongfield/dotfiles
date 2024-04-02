@@ -19,7 +19,13 @@ if type brew &>/dev/null; then
 fi
 
 # asdf tool version manager
-. /usr/local/opt/asdf/bin/asdf.sh
+if [[ -x /usr/local/opt/asdf/asdf.sh ]]; then
+  . /usr/local/opt/asdf/asdf.sh
+  # append completions to fpath
+  fpath=(${ASDF_DIR}/completions $fpath)
+  # initialise completions with ZSH's compinit
+  autoload -Uz compinit && compinit
+fi
 
 # use the correct editor
 alias vi='vim'

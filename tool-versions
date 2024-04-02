@@ -2,7 +2,7 @@ maven 3.8.5
 java adoptopenjdk-11.0.16+101
 python 3.10.14
 terraform 0.13.6
-ruby 3.1.2
+ruby 2.7.6
 nodejs 17.2.0
 awscli 2.7.27
 istioctl 1.21.0

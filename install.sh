@@ -22,7 +22,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   brew install berkeley-db coreutils curl docker fzf gcc git git-extras grep gnutls httpie jq lz4 lzo ncurses openssl openssl@1.1 screen sqlite tmux wget xz zsh
-  brew install asdf awscli bat dive docutils gh go groff htop helm iterm2 k9s lsd postman slack telnet the-unarchiver vim visual-studio-code vlc
+  brew install awscli bat dive docutils gh go groff htop helm iterm2 k9s lsd postman slack telnet the-unarchiver vim visual-studio-code vlc
   brew install font-awesome-terminal-fonts font-fira-code font-fira-code-nerd-font font-fira-mono font-fontawesome
 
   defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
@@ -37,6 +37,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
   launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
+
+  sudo git clone https://github.com/asdf-vm/asdf.git /usr/local/opt/asdf --branch v${ASDF_VERSION}
+  sudo chmod +x /usr/local/opt/asdf/asdf.sh
 fi
 
 if [[ "$OSTYPE" == "linux-gnu" ]]
@@ -69,6 +72,7 @@ then
     sudo apt install -y build-essential libffi-dev make libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev unzip zsh vim
 
     sudo git clone https://github.com/asdf-vm/asdf.git /usr/local/opt/asdf --branch v${ASDF_VERSION}
+    sudo chmod +x /usr/local/opt/asdf/asdf.sh
   fi
 
   if [ -e /usr/sbin/pacman ]
