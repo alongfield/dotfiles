@@ -19,7 +19,7 @@ if type brew &>/dev/null; then
 fi
 
 # asdf tool version manager
-if [[ -x /usr/local/opt/asdf/asdf.sh ]]; then
+if [[ -e /usr/local/opt/asdf/asdf.sh ]]; then
   . /usr/local/opt/asdf/asdf.sh
   # append completions to fpath
   fpath=(${ASDF_DIR}/completions $fpath)

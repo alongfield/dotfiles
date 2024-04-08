@@ -77,15 +77,15 @@ then
 
   if [ -e /usr/sbin/pacman ]
   then
-    pacman -Syu
+    sudo pacman -Syu
 
-    pacman -S git
+    sudo pacman -S git
     git clone https://aur.archlinux.org/yay-git.git $HOME/yay-git
     cd $HOME/yay-git
     makepkg -si
 
     sudo pacman -S base-devel
-    yay -S asdf-vm bat lsd jq yq helm k9s krew-bin kubectl links net-tools openssh p7zip unzip awesome-terminal-fonts wget curl zsh vim inetutils net-tools github-cli
+    yay -S less asdf-vm bat lsd jq yq helm k9s krew-bin kubectl links net-tools openssh p7zip unzip awesome-terminal-fonts wget curl zsh vim inetutils net-tools github-cli
 
     sudo mkdir -p /usr/local/opt
     sudo ln -s /opt/asdf-vm /usr/local/opt/asdf
