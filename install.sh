@@ -103,6 +103,7 @@ ln -s $HOME/dotfiles/k9s/plugins.yaml $HOME/.config/k9s/plugins.yaml
 /usr/local/opt/asdf/bin/asdf plugin add java https://github.com/halcyon/asdf-java.git
 /usr/local/opt/asdf/bin/asdf plugin add kubectl https://github.com/asdf-community/asdf-kubectl.git
 /usr/local/opt/asdf/bin/asdf plugin add maven https://github.com/halcyon/asdf-maven.git
+/usr/local/opt/asdf/bin/asdf plugin add mc https://github.com/penpyt/asdf-mc.git
 /usr/local/opt/asdf/bin/asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 /usr/local/opt/asdf/bin/asdf plugin add python https://github.com/danhper/asdf-python.git
 /usr/local/opt/asdf/bin/asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
