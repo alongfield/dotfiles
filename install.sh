@@ -1,9 +1,9 @@
 #!/bin/sh
 
-LSD_VERSION="1.1.1"
-K9S_VERSION="0.32.4"
-ASDF_VERSION="0.14.0"
-K8S_VERSION="1.28"
+LSD_VERSION="1.1.5"
+K9S_VERSION="0.32.5"
+ASDF_VERSION="0.14.1"
+K8S_VERSION="1.30"
 
 sudo echo Starting
 
@@ -92,6 +92,11 @@ then
     sudo chown root:root /usr/local/opt /usr/local/opt/asdf
   fi
 fi
+
+kubectl krew install modify-secret tail
+
+mkdir -p $HOME/.config/k9s
+ln -s $HOME/dotfiles/k9s/plugins.yaml $HOME/.config/k9s/plugins.yaml
 
 /usr/local/opt/asdf/bin/asdf plugin add awscli https://github.com/MetricMike/asdf-awscli.git
 /usr/local/opt/asdf/bin/asdf plugin add istioctl https://github.com/virtualstaticvoid/asdf-istioctl.git
