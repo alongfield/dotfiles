@@ -7,6 +7,7 @@ nodejs 17.2.0
 awscli 2.15.59
 istioctl 1.21.0
 rust 1.73.0
-kubectl 1.30.4
+kubectl 1.28.12
 mc 2024-09-16T17-43-14Z
 pnpm 9.1.1
+yarn 1.22.22

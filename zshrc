@@ -23,10 +23,10 @@ if type brew &>/dev/null; then
 fi
 
 # asdf tool version manager
-if [[ -e /usr/local/opt/asdf/asdf.sh ]]; then
-  . /usr/local/opt/asdf/asdf.sh
+if [[ -e /usr/local/opt/asdf/bin/asdf ]] || [[ -e /usr/local/bin/asdf ]]; then
+  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
   # append completions to fpath
-  fpath=(${ASDF_DIR}/completions $fpath)
+  fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
   # initialise completions with ZSH's compinit
   autoload -Uz compinit && compinit
 fi
@@ -65,6 +65,8 @@ alias kprod='k config use-context prod-main'
 alias kprodcentral='k config use-context prod-central'
 
 alias kops='k config use-context ops-main'
+
+alias keu1='k config use-context eu1-main'
 
 alias k9s='k9s --namespace $(kubectl config view --minify -o jsonpath='{..namespace}')'
 

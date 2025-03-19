@@ -2,8 +2,8 @@
 
 LSD_VERSION="1.1.5"
 K9S_VERSION="0.32.5"
-ASDF_VERSION="0.14.1"
-K8S_VERSION="1.30"
+ASDF_VERSION="0.16.5"
+K8S_VERSION="1.31"
 
 sudo echo Starting
 
@@ -38,8 +38,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
   launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
 
-  sudo git clone https://github.com/asdf-vm/asdf.git /usr/local/opt/asdf --branch v${ASDF_VERSION}
-  sudo chmod +x /usr/local/opt/asdf/asdf.sh
+  brew install asdf
 fi
 
 if [[ "$OSTYPE" == "linux-gnu" ]]
@@ -71,8 +70,10 @@ then
 
     sudo apt install -y build-essential libffi-dev make libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev unzip zsh vim
 
-    sudo git clone https://github.com/asdf-vm/asdf.git /usr/local/opt/asdf --branch v${ASDF_VERSION}
-    sudo chmod +x /usr/local/opt/asdf/asdf.sh
+    curl -fSLo asdf.tar.gz https://github.com/asdf-vm/asdf/releases/download/v${ASDF_VERSION}/asdf-v${ASDF_VERSION}-linux-amd64.tar.gz
+    sudo tar -zxf asdf.tar.gz -C /usr/local/bin asdf
+    sudo chmod +x /usr/local/bin/asdf
+    rm -f asdf.tar.gz
   fi
 
   if [ -e /usr/sbin/pacman ]
@@ -86,10 +87,6 @@ then
 
     sudo pacman -S base-devel
     yay -S less asdf-vm bat lsd jq yq helm k9s krew-bin kubectl links net-tools openssh p7zip unzip awesome-terminal-fonts wget curl zsh vim inetutils net-tools github-cli
-
-    sudo mkdir -p /usr/local/opt
-    sudo ln -s /opt/asdf-vm /usr/local/opt/asdf
-    sudo chown root:root /usr/local/opt /usr/local/opt/asdf
   fi
 fi
 
